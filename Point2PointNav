@@ -1,0 +1,10 @@
+try:
+	
+except IOError as error:
+	print(error)
+except TypeError as error:
+	print(error)
+except KeyboardInterrupt: #Preventing the user from cancelling the execution with CRTL + C . . . for some reason?
+	print("You pressed ctrl+C...")
+
+BP.reset_all() #resets the brick_PI
