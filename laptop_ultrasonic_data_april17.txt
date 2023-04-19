@@ -1,0 +1,90 @@
+Python 3.7.3 (default, Jan 22 2021, 20:04:44) 
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+==== RESTART: /home/team_92/Desktop/Examples/GrovePi/grove_ultrasonic.py ====
+2
+Right side: 1
+Left side: 1
+
+4
+Right side: 2
+Left side: 2
+
+6
+Right side: 4
+Left side: 4
+
+8
+Right side: 6
+Left side: 6
+
+10
+Right side: 8
+Left side: 8
+
+12
+Right side: 10
+Left side: 11
+
+14
+Right side: 11
+Left side: 12
+
+16
+Right side: 15
+Left side: 15
+
+18
+Right side: 17
+Left side: 15
+
+20
+Right side: 18
+Left side: 17
+
+22
+Right side: 20
+Left side: 19
+
+24
+Right side: 21
+Left side: 21
+
+26
+Right side: 24
+Left side: 23
+
+28
+Right side: 25
+Left side: 26
+
+30
+Right side: 27
+Left side: 26
+
+32
+Right side: 30
+Left side: 28
+
+34
+Right side: 31
+Left side: 31
+
+36
+Right side: 33
+Left side: 32
+
+38
+Right side: 35
+Left side: 34
+
+40
+Right side: 37
+Left side: 36
+
+Traceback (most recent call last):
+  File "/home/team_92/Desktop/Examples/GrovePi/grove_ultrasonic.py", line 48, in <module>
+    type = input("")
+KeyboardInterrupt
+>>> 

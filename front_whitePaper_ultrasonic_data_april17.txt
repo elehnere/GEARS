@@ -1,0 +1,41 @@
+Python 3.7.3 (default, Jan 22 2021, 20:04:44) 
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+==== RESTART: /home/team_92/Desktop/Examples/GrovePi/grove_ultrasonic.py ====
+6
+Front side: 6
+8
+Front side: 7
+10
+Front side: 9
+12
+Front side: 11
+14
+Front side: 12
+16
+Front side: 15
+18
+Front side: 16
+20
+Front side: 19
+22
+Front side: 21
+24
+Front side: 22
+26
+Front side: 25
+28
+Front side: 26
+30
+Front side: 28
+32
+Front side: 30
+34
+Front side: 32
+36
+Front side: 34
+38
+Front side: 36
+40
+Front side: 39
