@@ -83,41 +83,56 @@ def driveSequence():
         BP.set_motor_power(BP.PORT_B, -30)
         BP.set_motor_power(BP.PORT_C, -30)
 
-    rightDistance1 = grovepi.ultrasonicRead(8) # left sensor on the connecting bar     
-    rightDistance2 = grovepi.ultrasonicRead(7) # right sensor on the connecting bar      
-    frontDistance = grovepi.ultrasonicRead(6)
+#rightDistance1 = grovepi.ultrasonicRead(8) # left sensor on the connecting bar     
+#rightDistance2 = grovepi.ultrasonicRead(7) # right sensor on the connecting bar      
+#frontDistance = grovepi.ultrasonicRead(6)
     
-    rightAvg = (rightDistance1 + rightDistance2) / 2 # for PID control only
+rightAvg = (rightDistance1 + rightDistance2) / 2 # for PID control only
     
-    # Uses right wall tracking and coordinate math to make decisions
     
-    # Case 1 & 6: If walls on right and front is open, go straight
-    if rightDistance2 < 12 and frontDistance > 12:
-        print("going straight")
-        #go straight
-        #updatePosition(straight)
-        
-    # Case 2 & 4: If walls on front and right (possibly dead end), turn left
-    if rightDistance2 < 12 and frontDistance < 12:
-        turn("l")
-        
-    # Case 3 & 7: If walls on front and right is open, turn right (must 
-    #   turn right even if option to go left since robot doesn't know)
-    if rightDistance2 > 12 and frontDistance < 12:
-        turn("r")
-        
-    # Case 5: If front and right is open, check if at the end, if not do math
-    if rightDistance2 > 12 and frontDistance > 12:
-        turn("l") # Turn left to check left side using front sensor
-        if rightDistance2 > 12 and frontDistance > 12:
-            # Robot has reached the end
-            print("Deposit cargo")
-        else:
-            print("Do math")
+# Uses right wall tracking and coordinate math to make decisions    
+def detectRight():
+    rightDistance2 = grovepi.ultrasonicRead(7) # right sensor on the connecting bar 
+    if rightDistance2 > 12:
+        return 1    #output 1 if the right side is clear
+    if rightDistance2 < 12:
+        return 0    #output 0 otherwise
+    print(rightDistance2)
 
-    BP.set_motor_power(BP.PORT_B, 0)
-    BP.set_motor_power(BP.PORT_C, 0)
-    traveledSegmentCount = traveledSegmentCount + 1
+def detectFront():
+    frontDistance = grovepi.ultrasonicRead(6)
+    if frontDistance > 12:
+        return 1    #output 1 if the front side is clear
+    if frontDistance < 12:
+        return 0    #output 0 otherwise
+    print(frontDistance)
+
+
+# Case 1 & 6: If walls on right and front is open, go straight
+if detectRight() == 0 and detectFront() == 1:
+    print('go straight (insert function here)')
+    
+# Case 2 & 4: If walls on front and right (possibly dead end), turn left
+if detectRight() == 0 and detectFront() == 0:
+    turn("l")
+    
+# Case 3 & 7: If walls on front and right is open, turn right (must 
+#   turn right even if option to go left since robot doesn't know)
+if detectRight() == 1 and detectFront() == 0:
+    turn("r")
+    
+# Case 5: If front and right is open, check if at the end, if not do math
+if detectRight() == 1 and detectFront() == 1:
+    turn("l") # Turn left to check left side using front sensor
+    if rightDistance2 > 12 and frontDistance > 12:
+        # Robot has reached the end
+        print("Deposit cargo")
+    else:
+        print("Do math")
+
+BP.set_motor_power(BP.PORT_B, 0)
+BP.set_motor_power(BP.PORT_C, 0)
+traveledSegmentCount = traveledSegmentCount + 1
 
 mapDirectionsArray = []
 
